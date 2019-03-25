@@ -1,13 +1,14 @@
 package com.example.lastfm
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 
 
@@ -43,12 +44,11 @@ internal class CustomAdapter(
 
     override fun onClick(view: View) {
         val itemPosition = recyclerView.getChildLayoutPosition(view)
-        val item = dataList[itemPosition].getName()
         val result = dataList[itemPosition]
-        Toast.makeText(context, item, Toast.LENGTH_LONG).show()
-//        val intent = Intent(context, DetailActivity::class.java)
-////        intent.putExtra("ITEM", result)
-////        context.startActivity(intent)
+        //Toast.makeText(context, item, Toast.LENGTH_LONG).show()
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra("ITEM", Gson().toJson(result))
+        context.startActivity(intent)
     }
 
     internal class CustomViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {

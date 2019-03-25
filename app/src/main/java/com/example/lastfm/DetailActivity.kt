@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
-
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 
 class DetailActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class DetailActivity : AppCompatActivity() {
         textStream = findViewById(R.id.streamable)
 
         var intent = intent
-        var item = intent.getSerializableExtra("ITEM") as CommonResult
+        var item: CommonResult = Gson().fromJson(intent.getStringExtra("ITEM"), CommonResult::class.java)
         textName.setText(item.getName())
         textArtist.setText(item.getArtist())
         textURL.setText(item.getUrl())
