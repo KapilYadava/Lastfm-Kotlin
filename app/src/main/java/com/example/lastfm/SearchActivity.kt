@@ -30,8 +30,11 @@ class SearchActivity : AppCompatActivity(), View.OnClickListener, RadioGroup.OnC
             return
         }
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("KEYWORD", keyword!!.text.toString())
-        intent.putExtra("TYPE", type) // type 0 for search by Album/song, type 1 for search by artist.
+        intent.putExtra(resources.getString(R.string.KEYWORD), keyword!!.text.toString())
+        intent.putExtra(
+            resources.getString(R.string.TYPE),
+            type
+        ) // type 0 for search by Album/song, type 1 for search by artist.
         startActivity(intent)
     }
 

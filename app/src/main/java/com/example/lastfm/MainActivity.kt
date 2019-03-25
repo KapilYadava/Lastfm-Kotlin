@@ -24,9 +24,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         listView = findViewById(R.id.listView)
 
-        val intent = intent
-        keyword = intent.getStringExtra("KEYWORD")
-        type = intent.getIntExtra("TYPE", 0)
+        keyword = intent.getStringExtra(resources.getString(R.string.KEYWORD))
+        type = intent.getIntExtra(resources.getString(R.string.TYPE), 0)
 
         progressDialog = ProgressDialog(this@MainActivity)
         progressDialog!!.setMessage("Loading....")

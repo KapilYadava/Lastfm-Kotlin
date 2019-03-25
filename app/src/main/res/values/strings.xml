@@ -7,4 +7,6 @@
     <string name="by_artist">By Artist</string>
     <string name="enter_keyword">Enter Keyword</string>
     <string name="ITEM">item</string>
+    <string name="KEYWORD">keyword</string>
+    <string name="TYPE">type</string>
 </resources>
