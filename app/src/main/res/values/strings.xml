@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lastfm</string>
+    <string name="search">Search</string>
+    <string name="last_fm_api_key">c3b522819f98239ec82a72a11d397899</string>
+    <string name="by_song">By Song</string>
+    <string name="by_album">By Album</string>
+    <string name="by_artist">By Artist</string>
+    <string name="enter_keyword">Enter Keyword</string>
+</resources>
