@@ -26,7 +26,7 @@ class SearchActivity : AppCompatActivity(), View.OnClickListener, RadioGroup.OnC
     }
 
     override fun onClick(view: View) {
-        if (keyword!!.text.toString().length == 0) {
+        if (keyword?.text.toString().isEmpty()) {
             return
         }
         val intent = Intent(this, MainActivity::class.java)

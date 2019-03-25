@@ -26,17 +26,19 @@ class DetailActivity : AppCompatActivity() {
         textListener = findViewById(R.id.listeners)
         textStream = findViewById(R.id.streamable)
 
-        var intent = intent
-        var item: CommonResult = Gson().fromJson(intent.getStringExtra("ITEM"), CommonResult::class.java)
-        textName.setText(item.getName())
-        textArtist.setText(item.getArtist())
-        textURL.setText(item.getUrl())
-        textListener.setText(item.getListeners())
-        textStream.setText(item.getStreamable())
+        val item: CommonResult =
+            Gson().fromJson(intent.getStringExtra(resources.getString(R.string.ITEM)), CommonResult::class.java)
 
-        var imgURL = item.getImage()[3].getText()
+        textName.text = item.getName()
+        textName.text = item.getName()
+        textArtist.text = item.getArtist()
+        textURL.text = item.getUrl()
+        textListener.text = item.getListeners()
+        textStream.text = item.getStreamable()
 
-        if (imgURL.length > 0) {
+        val imgURL = item.getImage()[3].getText()
+
+        if (imgURL.isNotEmpty()) {
             Picasso.with(this)
                 .load(imgURL).placeholder(R.color.cardview_dark_background)
                 .error(R.color.cardview_dark_background)

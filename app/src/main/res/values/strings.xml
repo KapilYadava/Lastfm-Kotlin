@@ -6,4 +6,5 @@
     <string name="by_album">By Album</string>
     <string name="by_artist">By Artist</string>
     <string name="enter_keyword">Enter Keyword</string>
+    <string name="ITEM">item</string>
 </resources>

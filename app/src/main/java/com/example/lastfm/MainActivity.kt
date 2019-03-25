@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private var type: Int = 0
     private lateinit var listView: RecyclerView
 
-    //String URL = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=criminal&api_key=c3b522819f98239ec82a72a11d397899&format=json";
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

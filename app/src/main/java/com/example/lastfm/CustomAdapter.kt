@@ -47,7 +47,7 @@ internal class CustomAdapter(
         val result = dataList[itemPosition]
         //Toast.makeText(context, item, Toast.LENGTH_LONG).show()
         val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra("ITEM", Gson().toJson(result))
+        intent.putExtra(context.resources.getString(R.string.ITEM), Gson().toJson(result))
         context.startActivity(intent)
     }
 
