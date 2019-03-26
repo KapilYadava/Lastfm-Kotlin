@@ -4,8 +4,8 @@ import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,16 +13,15 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private var adapter: CustomAdapter? = null
-    private var recyclerView: RecyclerView? = null
     private var progressDialog: ProgressDialog? = null
     private var keyword: String? = null
     private var type: Int = 0
-    private lateinit var listView: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        listView = findViewById(R.id.listView)
+
 
         keyword = intent.getStringExtra(resources.getString(R.string.KEYWORD))
         type = intent.getIntExtra(resources.getString(R.string.TYPE), 0)
@@ -55,8 +54,6 @@ class MainActivity : AppCompatActivity() {
     private fun generateDataList(response: String) {
         val cleanedResponse = response.replace("#text", "text")
         val result = Gson().fromJson(cleanedResponse, Result::class.java)
-        recyclerView = findViewById(R.id.listView)
-        recyclerView!!.setHasFixedSize(true)
         var common: List<CommonResult>? = null
         if (type == R.id.byAlbum)
             common = result.getResults().getAlbumMatches().getAlbum()
@@ -65,10 +62,10 @@ class MainActivity : AppCompatActivity() {
         else
             common = result.getResults().getTrackmatches().getTrack()
 
-        adapter = CustomAdapter(this, common, listView)
+        adapter = CustomAdapter(this, common, recyclerView)
         val layoutManager = LinearLayoutManager(this@MainActivity)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = adapter
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
     }
 
 }

@@ -6,10 +6,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.custom_row.view.*
 
 
 internal class CustomAdapter(
@@ -26,15 +25,15 @@ internal class CustomAdapter(
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.txtTitle.text = dataList[position].getName()
-        holder.txtArtist.text = dataList[position].getArtist()
-        holder.txtUrl.text = dataList[position].getUrl()
+        holder.view.title.text = dataList[position].getName()
+        holder.view.artist.text = dataList[position].getArtist()
+        holder.view.url.text = dataList[position].getUrl()
         val imageUrl = dataList[position].getImage()[2].getText()
         if (imageUrl.length > 0) {
             Picasso.with(context)
                 .load(imageUrl).placeholder(R.color.cardview_dark_background)
                 .error(R.color.cardview_dark_background)
-                .into(holder.imageView)
+                .into(holder.view.image)
         }
     }
 
@@ -51,19 +50,7 @@ internal class CustomAdapter(
         context.startActivity(intent)
     }
 
-    internal class CustomViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-
-        var txtTitle: TextView
-        var txtArtist: TextView
-        var txtUrl: TextView
-        var imageView: ImageView
-
-        init {
-            imageView = mView.findViewById(R.id.image)
-            txtTitle = mView.findViewById(R.id.title)
-            txtArtist = mView.findViewById(R.id.artist)
-            txtUrl = mView.findViewById(R.id.url)
-        }
-
+    internal class CustomViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+        var view: View = mView
     }
 }

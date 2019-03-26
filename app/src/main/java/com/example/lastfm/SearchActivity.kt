@@ -4,25 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.RadioGroup
+import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity(), View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
-    private var keyword: EditText? = null
-    private var radioGroup: RadioGroup? = null
+
     private var type: Int = 0
-    private var btnSearch: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        keyword = findViewById(R.id.keyword)
-        radioGroup = findViewById(R.id.radio)
-        btnSearch = findViewById(R.id.btnSearch)
+
         btnSearch?.setOnClickListener(this)
-        radioGroup!!.setOnCheckedChangeListener(this)
+        radio?.setOnCheckedChangeListener(this)
     }
 
     override fun onClick(view: View) {

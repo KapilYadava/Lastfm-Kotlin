@@ -8,7 +8,7 @@ class CommonResult : Serializable {
     private var artist: String? = null
     private lateinit var url: String
     private lateinit var streamable: String
-    private lateinit var listeners: String
+    private var listeners: String? = null
     private lateinit var image: List<Image>
 
     fun getName(): String {
@@ -51,7 +51,7 @@ class CommonResult : Serializable {
         this.streamable = streamable
     }
 
-    fun getListeners(): String {
+    fun getListeners(): String? {
         return listeners
     }
 
